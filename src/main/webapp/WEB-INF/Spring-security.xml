@@ -7,27 +7,21 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/security
 		http://www.springframework.org/schema/security/spring-security.xsd">
 		
+		<http pattern="/login.jsp" security="none"/>
 		
-		
-				<http>
-					<intercept-url pattern="/**" access="hasRole('USER')" />
-					<form-login />
-					<logout />
-				</http>
+		<http>
+			<intercept-url pattern="/**" access="hasRole('USER')" />
+			<form-login login-page="/login"/>
+			<logout />
+		</http>
 				
-				
-				
-				
-				<authentication-manager>
+	<authentication-manager>
 				<authentication-provider>
 					<user-service>
 						<user name="user1" password="user1" authorities="ROLE_USER, ROLE_ADMIN" />
 						<user name="user2" password="user2" authorities="ROLE_USER, ROLE_ADMIN" />
 					</user-service>
-			
 				</authentication-provider>
-	
-	
 	</authentication-manager> 
 		
 </beans:beans> 

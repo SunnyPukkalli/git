@@ -24,9 +24,23 @@ public class MainController {
 		return "index";
 	}
 	
-	
-	@RequestMapping(value = "/login1", method=RequestMethod.GET)
-	public String login(){
-		return "login";
+	/* Login */
+	@RequestMapping(value = "/login", method=RequestMethod.GET)
+	public ModelAndView login(){
+		
+		ModelAndView model = new ModelAndView("login");
+		
+		model.addObject("Header", "Custom Login Page");
+		
+		
+		return model;
 	}
+	/*
+	@RequestMapping(value = "/login", method=RequestMethod.POST)
+	public ModelAndView pLogin(){
+		
+		ModelAndView map = new ModelAndView("Main");
+		map.addObject("message", "Hello World");
+		return map;
+	}*/
 }

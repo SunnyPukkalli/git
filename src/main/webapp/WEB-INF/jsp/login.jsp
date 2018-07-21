@@ -8,11 +8,6 @@
 
 <style type="text/css">
 
-/* body {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background-color: #eee;
-} */
 
 .form-signin {
   max-width: 330px;
@@ -55,15 +50,30 @@
 
 
 
-      <form class="form-signin" action='/git/login' method="POST">
+    <%--   <form class="form-signin" action="${contextRoot}/git/login" method="POST">
+      
         <h2 class="form-signin-heading">Please Login in</h2>
-        <label for="inputUserName" class="sr-only">User Name</label>
-        <input type="text" name="username" id="inputUserName" class="form-control" placeholder="user name" required autofocus>
-        <label for="inputPassword" name="password" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+      
+        <label for="username" class="sr-only">User Name</label>
+        <input type="text" name="username" id="username" class="form-control" placeholder="user name" required autofocus>
+      
+        <label for="password" name="password" class="sr-only">Password</label>
+        <input type="password" id="password" class="form-control" placeholder="Password" required>
+      
         <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
-      </form>
+        <input type="hidden"  name="${_csrf.parameterName}" value="${_csrf.token}"/>
+      
+      </form> --%>
 
+
+<form name='f' action='/git/login' method='POST'>
+<table>
+	<tr><td>User:</td><td><input type='text' name='username' value=''></td></tr>
+	<tr><td>Password:</td><td><input type='password' name='password'/></td></tr>
+	<tr><td colspan='2'><input name="submit" type="submit" value="Login"/></td></tr>
+	<input type="hidden"  name="${_csrf.parameterName}" value="${_csrf.token}"/>
+</table>
+</form>
     
 </body>
 </html>

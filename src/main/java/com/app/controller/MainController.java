@@ -69,4 +69,12 @@ public class MainController {
 		map.addObject("message", "From Search Page");
 		return map;
 	}
+	
+	@RequestMapping(value={"/admin"})
+	public ModelAndView admin(){
+		
+		ModelAndView map = new ModelAndView("admin");
+		map.addObject("message", "From Admin Page");
+		return map;
+	}
 }

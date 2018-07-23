@@ -4,15 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Index</title>
 </head>
 <body>
-
-
-<a href="/git/download">Download</a>
-<a href="/git/upload">Upload</a>
-<a href="/git/search">Search</a>
-<a href="/git/report">Report</a>
-<a href="/git/admin">Report</a>
+${message}
 </body>
 </html>

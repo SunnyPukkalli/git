@@ -25,7 +25,7 @@ public class MainController {
 	}
 	
 	/* Login */
-	@RequestMapping(value = "/login", method=RequestMethod.GET)
+	@RequestMapping(value = "/log", method=RequestMethod.GET)
 	public ModelAndView login(){
 		
 		ModelAndView model = new ModelAndView("login");

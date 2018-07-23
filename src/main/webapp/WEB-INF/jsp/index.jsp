@@ -13,6 +13,6 @@
 <a href="/git/upload">Upload</a>
 <a href="/git/search">Search</a>
 <a href="/git/report">Report</a>
-<a href="/git/admin">Report</a>
+<a href="/git/admin">Admin</a>
 </body>
 </html>

@@ -9,6 +9,9 @@
 <body>
 
 
-<a href="/git/main">Navigate</a>
+<a href="/git/download">Download</a>
+<a href="/git/upload">Upload</a>
+<a href="/git/search">Search</a>
+<a href="/git/report">Report</a>
 </body>
 </html>

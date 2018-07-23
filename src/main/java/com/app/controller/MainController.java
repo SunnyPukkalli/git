@@ -35,12 +35,38 @@ public class MainController {
 		
 		return model;
 	}
-	/*
-	@RequestMapping(value = "/login", method=RequestMethod.POST)
-	public ModelAndView pLogin(){
+	
+	
+	@RequestMapping(value={"/download"})
+	public ModelAndView download(){
 		
-		ModelAndView map = new ModelAndView("Main");
-		map.addObject("message", "Hello World");
+		ModelAndView map = new ModelAndView("download");
+		map.addObject("message", "From Download Page");
 		return map;
-	}*/
+	}
+	
+	
+	@RequestMapping(value={"/upload"})
+	public ModelAndView upload(){
+		
+		ModelAndView map = new ModelAndView("upload");
+		map.addObject("message", "From Upload Page");
+		return map;
+	}
+	
+	@RequestMapping(value={"/report"})
+	public ModelAndView report(){
+		
+		ModelAndView map = new ModelAndView("report");
+		map.addObject("message", "From Report Page");
+		return map;
+	}
+	
+	@RequestMapping(value={"/search"})
+	public ModelAndView search(){
+		
+		ModelAndView map = new ModelAndView("search");
+		map.addObject("message", "From Search Page");
+		return map;
+	}
 }

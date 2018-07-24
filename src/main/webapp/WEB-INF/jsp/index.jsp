@@ -14,5 +14,7 @@
 <a href="/git/search">Search</a>
 <a href="/git/report">Report</a>
 <a href="/git/admin">Admin</a>
+
+hello ${username}
 </body>
 </html>

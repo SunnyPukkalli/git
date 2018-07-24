@@ -6,6 +6,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 </head>
 <body>
+
+<%@ include file="index.jsp" %>
+
+<br>
 ${message}
+<br>
+
+
+<%-- ${pageContext.request.userPrincipal.name}
+ --%>
+${users}
+
+<a href="/git/allusers">All users</a> 
+
 </body>
 </html>

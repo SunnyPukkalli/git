@@ -43,9 +43,6 @@ public class LoginService implements UserDetailsService {
 			}
 		}
 		
-		System.out.println(">>"+user.getUsername());
-		System.out.println(">>>"+user.getPassword());
-		System.out.println(">>"+grantList);
 		
 		UserDetails userDetails = new User(user.getUsername(), user.getPassword(), grantList);
 		

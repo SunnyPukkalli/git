@@ -12,7 +12,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<http>
 			<intercept-url pattern="/log" access="permitAll"/>
 			<intercept-url pattern="/" access="hasRole('USER')" />
-			 <form-login login-page="/log" />
+			 <form-login login-page="/log"  authentication-success-forward-url="/"/>
 <!-- 			 <form-login/> -->
 			<logout />
 		</http>

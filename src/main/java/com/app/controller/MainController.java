@@ -1,10 +1,16 @@
 package com.app.controller;
 
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -31,30 +37,21 @@ public class MainController {
 	}
 	
 	/* Login */
-	@RequestMapping(value = "/log", method=RequestMethod.GET)
-	public ModelAndView login(){
+	@RequestMapping(value = "/login", method=RequestMethod.GET)
+	public ModelAndView login(@RequestParam(value="error",required=false) String error){
 		
-		ModelAndView model = new ModelAndView("login");
+		ModelAndView model = new ModelAndView();
 		
+		
+		if(error!=null){
+			model.addObject("error", "wrong credentails");
+		}
+		model.setViewName("login");
 		model.addObject("Header", "Custom Login Page");
 		
 		
 		return model;
 	}
-	
-	@RequestMapping(value = "/login", method=RequestMethod.POST)
-	public ModelAndView afterLogin(){
-		
-		System.out.println("POST");
-		
-		ModelAndView model = new ModelAndView("index");
-		
-		//model.addObject("Header", "Custom Login Page");
-		
-		return model;
-	}
-	
-	
 	
 	@RequestMapping(value={"/download"})
 	public ModelAndView download(){
@@ -99,9 +96,29 @@ public class MainController {
 	
 	@RequestMapping(value={"/allusers"})
 	public ModelAndView allUsers(){
-		System.out.println("inside all users");
+		
 		ModelAndView map = new ModelAndView("admin");
 		map.addObject("users", "all users");
+		return map;
+	}
+	
+	@RequestMapping(value={"/logout"})
+	public String logout(HttpServletRequest request, HttpServletResponse response){
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		
+		if(auth!=null){
+			new SecurityContextLogoutHandler().logout(request, response, auth);
+		}
+		
+		return "redirect:/login";
+	}
+	
+	
+	@RequestMapping(value="/accessDenied")
+	public ModelAndView accessDenied(){
+		ModelAndView map = new ModelAndView("403");
+		map.addObject("message","Access Denied");
 		return map;
 	}
 }

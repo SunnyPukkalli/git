@@ -6,15 +6,21 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 		http://www.springframework.org/schema/security
 		http://www.springframework.org/schema/security/spring-security.xsd">
-		
-		
+		<!-- 
+		<http use-expressions="true" pattern="/log" security="none" />
+		<http use-expressions="true" pattern="/log" security="none" />
+		<http use-expressions="true" pattern="/log" security="none" /> -->
 		
 		<http>
-			<intercept-url pattern="/log" access="permitAll"/>
-			<intercept-url pattern="/" access="hasRole('USER')" />
-			 <form-login login-page="/log"  authentication-success-forward-url="/"/>
-<!-- 			 <form-login/> -->
-			<logout />
+			<intercept-url pattern="/login" access="permitAll"/>
+			<intercept-url pattern="/" access="hasRole('USER') or hasRole('ADMIN')" />
+			<intercept-url pattern="/user/list" access="hasRole('ADMIN')" />
+			<form-login login-page="/login"  
+				authentication-success-forward-url="/" 
+				authentication-failure-forward-url="/login?error"/>
+			<logout logout-url="/logout" logout-success-url="/login" />
+			<access-denied-handler error-page="/accessDenied" />
+			
 		</http>
 				
 <!-- 	

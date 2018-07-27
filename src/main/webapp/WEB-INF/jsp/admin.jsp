@@ -14,7 +14,7 @@ ${message}
 <br>
 
 
-<%-- ${pageContext.request.userPrincipal.name}
+<%--  ${pageContext.request.userPrincipal.name}
  --%>
 ${users}
 

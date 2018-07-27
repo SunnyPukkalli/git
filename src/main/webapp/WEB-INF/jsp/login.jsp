@@ -10,6 +10,8 @@
 
 Hii ${Header}
 
+${error}
+
 <form name='f' action='/git/login' method='POST'>
 <table>
 	<tr><td>User:</td><td><input type='text' name='username' value=''></td></tr>

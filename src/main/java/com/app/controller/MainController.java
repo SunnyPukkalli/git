@@ -4,6 +4,7 @@ package com.app.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -13,9 +14,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.app.service.LoginService;
+
 @Controller
 public class MainController {
 
+	@Autowired
+	private LoginService loginService;
 	
 	@RequestMapping(value={"/main"})
 	public ModelAndView hello(){
@@ -38,17 +43,24 @@ public class MainController {
 	
 	/* Login */
 	@RequestMapping(value = "/login", method=RequestMethod.GET)
-	public ModelAndView login(@RequestParam(value="error",required=false) String error){
+	public ModelAndView login(){
+		
+		ModelAndView model = new ModelAndView("login");
+		model.addObject("Header", "Custom Login Page");
+		
+		
+		return model;
+	}
+	
+	@RequestMapping(value = "/login", method=RequestMethod.POST)
+	public ModelAndView loginPost(@RequestParam(value="error",required=false) String error){
 		
 		ModelAndView model = new ModelAndView();
-		
 		
 		if(error!=null){
 			model.addObject("error", "wrong credentails");
 		}
 		model.setViewName("login");
-		model.addObject("Header", "Custom Login Page");
-		
 		
 		return model;
 	}
@@ -121,4 +133,29 @@ public class MainController {
 		map.addObject("message","Access Denied");
 		return map;
 	}
+	
+	
+	@RequestMapping(value="/signup", method=RequestMethod.POST)
+	public ModelAndView signup(@RequestParam String username , @RequestParam String password){
+		
+		boolean status = loginService.createNewUser(username, password);
+		
+		if (status) {
+			ModelAndView map = new ModelAndView("login");
+			map.addObject("loginMessage", "Login Successfull. You may Login to the Application");
+			return map;
+		} else {
+			ModelAndView map = new ModelAndView("signup");
+			map.addObject("loginMessage", "Username already exists");
+			return map;
+		}
+	}
+	
+	@RequestMapping(value="/signup", method=RequestMethod.GET)
+	public ModelAndView signup(){
+		
+		ModelAndView map = new ModelAndView("signup");
+		return map;
+	}
+	
 }

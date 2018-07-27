@@ -10,7 +10,9 @@
 
 Hii ${Header}
 
-${error}
+<p style="color: red" > ${error}</p>
+
+<p>${loginMessage}</p>
 
 <form name='f' action='/git/login' method='POST'>
 <table>
@@ -20,6 +22,8 @@ ${error}
 	<tr><td><input type="hidden"  name="${_csrf.parameterName}" value="${_csrf.token}"/></td></tr>
 </table>
 </form>
+   
+   <a href="/git/signup"> Signup</a>
     
 </body>
 </html>

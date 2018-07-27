@@ -11,4 +11,6 @@ public interface LoginDAO {
 	
 	
 	public List<String> getUserRoles(String username);
+	
+	public boolean createNewUser(String username , String password);
 }

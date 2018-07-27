@@ -49,4 +49,12 @@ public class LoginService implements UserDetailsService {
 		return userDetails;
 	}
 
+	public boolean createNewUser(String username , String password){
+		
+		//boolean status = false;
+		
+		boolean status = loginDAO.createNewUser(username,password);
+		
+		return status;
+	}
 }

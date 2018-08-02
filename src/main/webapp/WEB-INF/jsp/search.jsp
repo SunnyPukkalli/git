@@ -6,6 +6,32 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 </head>
 <body>
+<br>
 ${message}
+<br>
+<a href='/git/logout' >Logout</a>
+<br>
+${a }
+
+<form method='POST' action="/git/Usersearch">
+
+	<table>
+		<tr>
+		<td><label>Enter Username : </label></td>
+		<td> <input type="text" name="searchUsername" /> </td>
+		</tr>
+		
+		
+		<tr>
+			<td colspan="2"><input type="submit" name = 'Search'/></td>
+		</tr>
+		
+		<tr>
+		<td><input type="hidden"  name="${_csrf.parameterName}" value="${_csrf.token}"/></td>
+		</tr>
+		
+	</table>
+
+</form>
 </body>
 </html>

@@ -26,8 +26,8 @@ if(pwd !=repwd){
 ${loginMessage }
 <form name='f' action='/git/signup' method='POST'>
 <table>
-	<tr><td> Enter User:</td><td><input type='text' name='username' value=''></td></tr>
-	<tr><td> Enter Password:</td><td><input type='password' name='password' id='password'/></td></tr>
+	<tr><td> Enter User:</td><td><input type='text' name='username' ></td></tr>
+	<tr><td> Enter Password:</td><td><input type='password' name='password' id='password' /></td></tr>
 	<tr><td> Re-Enter Password:</td><td><input type='password' name='repassword' id='repassword' /></td></tr>
 	<tr><td colspan='2'><input name="submit" type="submit" value="signup" onclick="validate()"/></td></tr>
 	<tr><td><input type="hidden"  name="${_csrf.parameterName}" value="${_csrf.token}"/></td></tr>

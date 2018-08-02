@@ -91,7 +91,7 @@ public class MainController {
 	}
 	
 	@RequestMapping(value={"/search"})
-	public ModelAndView search(){
+	public ModelAndView searchPage(){
 		
 		ModelAndView map = new ModelAndView("search");
 		map.addObject("message", "From Search Page");
@@ -158,4 +158,12 @@ public class MainController {
 		return map;
 	}
 	
+	@RequestMapping(value="/Usersearch", method=RequestMethod.POST)
+	public ModelAndView search(){
+		
+		ModelAndView map = new ModelAndView("search");
+		map.addObject("a", "after search");
+		
+		return map;
+	}
 }
